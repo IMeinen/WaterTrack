@@ -29,3 +29,9 @@ def get_daily_register(request):
     res = registerController.get_daily(request)
     
     return Response(res, status=status.HTTP_200_OK)  
+
+@api_view(['GET'])
+def get_all_registers_by_user(request):
+    res = registerController.get_all_registers_by_user(request)
+    
+    return Response(res, status=status.HTTP_200_OK)  

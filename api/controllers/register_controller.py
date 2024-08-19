@@ -10,7 +10,7 @@ class RegisterController:
 
         return res
     
-    def get_daily(self, request):
-        res = self.service.get_daily(request)
+    def get_all_registers_by_user(self, request):
+        res = self.service.get_all_registers_by_user(request)
 
         return res

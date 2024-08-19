@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class User(models.Model):
     id= models.AutoField(primary_key=True)
@@ -12,5 +13,10 @@ class User(models.Model):
 class Register(models.Model):
     id= models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    amount = models.FloatField()
+    created_at = models.DateTimeField(null=True, blank=True)
+    amount = models.FloatField()  
+
+    def save(self, *args, **kwargs):
+        if not self.created_at:
+            self.created_at = timezone.now()
+        super(Register, self).save(*args, **kwargs)
